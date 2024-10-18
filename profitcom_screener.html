@@ -1,0 +1,16 @@
+
+<iframe style="border: none; width:100%; height: 100%;" data-widget-name="ScreenerWidget" src="https://widget.darqube.com/screener-widget?token=67129cf8e7351800243724f3" id="ScreenerWidget-z5vjbel"></iframe>
+<script>
+  window.top.addEventListener("message", function(msg) {
+    const widget = document.getElementById('ScreenerWidget-z5vjbel');
+    
+    if (!widget) return;
+    
+    const styles = msg.data?.styles;
+    const token = msg.data?.token;
+    const urlToken = new URL(widget.src)?.searchParams?.get?.('token');
+    if (styles && token === urlToken) {
+      Object.keys(styles).forEach(key => widget.style.setProperty(key, styles[key]))
+    }
+  });
+</script>
