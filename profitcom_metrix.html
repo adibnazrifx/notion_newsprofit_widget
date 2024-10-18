@@ -1,1 +1,16 @@
 
+<iframe style="border: none; width:100%; height: 100%;" data-widget-name="ForexWidget" src="https://widget.darqube.com/forex-widget?token=671298def588ee6453ca5603" id="ForexWidget-1u95knu"></iframe>
+<script>
+  window.top.addEventListener("message", function(msg) {
+    const widget = document.getElementById('ForexWidget-1u95knu');
+    
+    if (!widget) return;
+    
+    const styles = msg.data?.styles;
+    const token = msg.data?.token;
+    const urlToken = new URL(widget.src)?.searchParams?.get?.('token');
+    if (styles && token === urlToken) {
+      Object.keys(styles).forEach(key => widget.style.setProperty(key, styles[key]))
+    }
+  });
+</script>
